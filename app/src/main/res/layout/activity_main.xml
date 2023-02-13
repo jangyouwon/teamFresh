@@ -8,6 +8,7 @@
             name="main_viewModel"
             type="com.example.teamfresh.MainViewModel" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,14 +28,14 @@
             android:id="@+id/idText"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:minWidth="250dp"
             android:layout_marginTop="50dp"
-            android:padding="10dp"
             android:background="@xml/id_background"
-            android:textColorHint="#aaaaaa"
-            android:hint ="아이디"
+            android:hint="아이디"
             android:inputType="textPersonName"
+            android:minWidth="250dp"
+            android:padding="10dp"
             android:textColor="#000000"
+            android:textColorHint="#aaaaaa"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/logoImg" />
@@ -43,14 +44,14 @@
             android:id="@+id/pwText"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:minWidth="250dp"
             android:layout_marginTop="30dp"
-            android:padding="10dp"
             android:background="@xml/id_background"
-            android:textColorHint="#aaaaaa"
-            android:hint ="비밀번호"
+            android:hint="비밀번호"
             android:inputType="textPassword"
+            android:minWidth="250dp"
+            android:padding="10dp"
             android:textColor="#000000"
+            android:textColorHint="#aaaaaa"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/idText" />
@@ -59,16 +60,82 @@
             android:id="@+id/loginBtn"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:minWidth="250dp"
-            android:layout_marginTop="30dp"
-            android:gravity="center"
-            android:text="로그인"
-            android:padding="15dp"
+            android:layout_marginTop="50dp"
             android:background="@xml/login_background"
+            android:gravity="center"
+            android:minWidth="250dp"
+            android:padding="15dp"
+            android:text="로그인"
             android:textColor="#ffffff"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pwText" />
+
+        <TextView
+            android:id="@+id/findID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="아이디 찾기"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toStartOf="@+id/findPW"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="2dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="30dp"
+            android:background="#aaaaaa"
+            app:layout_constraintEnd_toStartOf="@+id/findPW"
+            app:layout_constraintStart_toEndOf="@+id/findID"
+            app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
+
+        <TextView
+            android:id="@+id/findPW"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="비밀번호 찾기"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toStartOf="@+id/makeAccount"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/findID"
+            app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="30dp"
+            android:background="#aaaaaa"
+            app:layout_constraintStart_toEndOf="@+id/findPW"
+            app:layout_constraintEnd_toStartOf="@+id/makeAccount"
+            app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
+
+        <TextView
+            android:id="@+id/makeAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="회원가입"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/findPW"
+            app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
+
+        <ImageView
+            android:id="@+id/kakaoLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view3"
+            app:srcCompat="@drawable/kakao_login" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
