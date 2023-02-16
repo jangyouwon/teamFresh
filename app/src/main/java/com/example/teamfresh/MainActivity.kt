@@ -1,31 +1,38 @@
 package com.example.teamfresh
 
+import android.app.Application
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.teamfresh.data.LoginRequest
 import com.example.teamfresh.data.LoginResponse
+import com.example.teamfresh.data.req
+import com.example.teamfresh.data.res
 import com.example.teamfresh.databinding.ActivityMainBinding
 import com.example.teamfresh.network.loginService
-
+import com.google.gson.Gson
+import com.google.gson.JsonElement
+import com.google.gson.JsonObject
+import com.squareup.moshi.Json
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Response
-import java.io.IOException
+
 
 class MainActivity : AppCompatActivity() {
     lateinit var test:TextView
     private lateinit var mBinding:ActivityMainBinding
-    private val model:MainViewModel by viewModels()
+
+    private val model: MainViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_main)
@@ -53,22 +60,25 @@ class MainActivity : AppCompatActivity() {
 
         test.setOnClickListener {
 
+            var testLogin = req("appdev","Timf1234")
 
+            loginService.service.loginCheck(testLogin).enqueue(object :retrofit2.Callback<res>{
 
-
-            var testLogin = LoginRequest("appdev","Timf1234")
-            Log.i("youwon", testLogin.toString())
-            loginService.service.loginCheck(testLogin).enqueue(object :retrofit2.Callback<LoginResponse>{
                 override fun onResponse(
-                    call: Call<LoginResponse>,
-                    response: Response<LoginResponse>
+                    call: Call<res>,
+                    response: Response<res>
                 ) {
-                    Log.d("youwon","success "+response)
+                    if(response.isSuccessful){
+                        Log.d("youwon","success "+response.isSuccessful)
+                        changePage()
+                    }
                 }
 
-                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                override fun onFailure(call: Call<res>, t: Throwable) {
                     Log.d("youwon","fail")
                 }
+
+
             })
         }
     }
